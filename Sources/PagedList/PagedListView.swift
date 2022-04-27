@@ -28,9 +28,9 @@ public struct PagedListView<OverlayView: View, Content: View>: View {
 
     
     @Binding var selection: String
-    let tags: [String]
-    let height: CGFloat
-    var config: PageConfig {
+    public let tags: [String]
+    public let height: CGFloat
+    public var config: PageConfig {
         didSet {
             if config.isAutoSlideOn == true {
                 startTimer()
@@ -41,14 +41,14 @@ public struct PagedListView<OverlayView: View, Content: View>: View {
         }
     }
     
-    let overlay: OverlayView?
+    public let overlay: OverlayView?
     
     @ViewBuilder var content: Content
     
     @State private var timerSubscription: Cancellable?
     @State private var timer = Timer.publish(every: 2, on: .main, in: .common)
     
-    init(selection: Binding<String>, tags: [String], height: CGFloat, config: PageConfig, @ViewBuilder overlayView: @escaping (() -> OverlayView?) = { nil }, @ViewBuilder content: (() -> Content)) {
+    public init(selection: Binding<String>, tags: [String], height: CGFloat, config: PageConfig, @ViewBuilder overlayView: @escaping (() -> OverlayView?) = { nil }, @ViewBuilder content: (() -> Content)) {
         _selection = selection
         self.tags = tags
         self.height = height
