@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct PagedListView<OverlayView: View, Content: View>: View {
+public struct PagedListView<OverlayView: View, Content: View>: View {
     
     public struct PageConfig {
         let pageIndicatorColor: UIColor
@@ -57,7 +57,7 @@ struct PagedListView<OverlayView: View, Content: View>: View {
         self.content = content()
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { proxy in
             ZStack (alignment: .center) {
                 TabView(selection: $selection) {
